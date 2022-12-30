@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.list-type{
+			list-style: none;
+		}
+		.listitem{
+			font-size: 5rem;
+		}
+		
+		body{
+			background-image: url(https://image.shutterstock.com/image-photo/beautiful-abstract-grungy-blue-stucco-260nw-1723930225.jpg);
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+		#newTodo{
+			background-color: white;
+			font-size: 30px;
+		}
+		.btn{
+			background-color: white;
+			font-size: 30px;
+		}
+		.sec{
+			text-align: center;
+			margin-top: 17%;
+			border: solid red;
+			border-width: 10px;
+			border-style: double;
+			margin-left: 30%;
+			margin-right: 30%;
+			background-color: yellow;
+			padding: 5%;
+		}
+		
+	</style>
+	<script src="https://kit.fontawesome.com/76957bae02.js" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		function todo(){
+			let newTodo=document.getElementById("newTodo").value
+			document.getElementById("newTodo").value=""
+			if(newTodo===""){
+				alert("Enter a todo")
+			}
+			else{
+				addTodo(newTodo)
+			}
+			}
+		function addTodo(newValue){
+			const d=new Date();
+
+			let ul=document.querySelector("ul")
+			console.log(ul)
+			let li=document.createElement("li")
+			li.innerHTML=`
+			<span class="listitem>${newValue} ${d.getHours()}:${d.getMinutes()}</span>
+			<i class="fa-solid fa-rectangle-xmark"></i>`
+			li.classList.add("list-Type")
+			ul.appendChild(li)
+		}
+	</script>
+</head>
+<body>
+	<div class="sec">
+	<input placeholder="Enter a todo" id="newTodo">
+	<ul>
+	</ul>
+	<button onclick="todo()" class="btn">Submit</button>
+</div>
+</body>
+</html>
